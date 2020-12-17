@@ -68,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                 alert.setPositiveButton("Ok", null);
                 alert.show();
                 edSenhaLogin.setError("O campo senha deve ser preenchido...");
-            } else if (edEmailLogin.getText().toString().equals("")) {
+            }
+            if (edEmailLogin.getText().toString().equals("")) {
                 progressDialog.dismiss();
                 //lancar mensg
                 AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
