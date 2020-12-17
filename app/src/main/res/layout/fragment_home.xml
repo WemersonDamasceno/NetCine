@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".views.ui.HomeFragment">
+    tools:context=".views.ui.HomeFragment"
+    android:background="@color/colorCinzaEscuro">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,16 +20,16 @@
             android:layout_marginEnd="5dp">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo_netcine"/>
+                android:src="@drawable/logo_sem_nome" />
 
             <TextView
                 android:layout_width="250dp"
+                android:textColor="@color/colorBranco"
                 android:layout_height="wrap_content"
                 android:text="Só aqui no NetCine você pode descobrir milhões de filmes e series, faça sua busca!"
-                android:textColorHint="@color/colorPreto"
                 android:textStyle="normal"
                 android:textAlignment="center"
                 android:fontFamily="sans-serif-medium"
@@ -42,12 +43,13 @@
                 android:layout_height="wrap_content"
                 android:text="Lançamento"
                 android:textSize="17sp"
-                android:textColor="@color/colorPreto"
+                android:textColor="@color/colorBranco"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/homeLancamentos"
+                android:id="@+id/rvHomeLancamentos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"/>
@@ -57,12 +59,13 @@
                 android:layout_height="wrap_content"
                 android:text="Filmes Cinema"
                 android:textSize="17sp"
-                android:textColor="@color/colorPreto"
+                android:textColor="@color/colorBranco"
+                android:textStyle="bold"
                 android:layout_marginTop="10dp"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/homeFilmesCinema"
+                android:id="@+id/rvHomeCinema"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"/>
@@ -71,13 +74,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Series recentes"
+                android:textColor="@color/colorBranco"
+                android:textStyle="bold"
                 android:textSize="17sp"
-                android:textColor="@color/colorPreto"
                 android:layout_marginTop="10dp"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/homeSeriesRecentes"
+                android:id="@+id/rvHomeSeriesRecentes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"/>
