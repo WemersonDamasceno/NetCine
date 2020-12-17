@@ -2,9 +2,11 @@ package com.example.netcine.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netcine.R;
 import com.example.netcine.models.Filme;
+import com.example.netcine.views.DetalhesFilmeActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -53,19 +56,33 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
 
     class ViewHolderFilme extends RecyclerView.ViewHolder {
         TextView tituloFilme;
+        ImageView imgFilme;
+
 
         ViewHolderFilme(@NonNull View itemView) {
             super(itemView);
-            //tituloFilme = itemView.findViewById(R.id.namePokemon);
+            tituloFilme = itemView.findViewById(R.id.nomeFilme);
+            imgFilme = itemView.findViewById(R.id.imgFilme);
+
+
+            imgFilme.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext, DetalhesFilmeActivity.class);
+                    intent.putExtra("filme",listFilmes.get(getAdapterPosition()));
+                    getContext.startActivity(intent);
+                }
+            });
 
 
         }
+
+
 
         private void setDados(final Filme fi) {
             //setar os dados
-
-
         }
+
 
 
     }
