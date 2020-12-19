@@ -1,8 +1,14 @@
 package com.example.netcine.views.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,21 +19,53 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.netcine.R;
 import com.example.netcine.adapters.AdapterFilme;
 import com.example.netcine.models.Filme;
-
+import com.example.netcine.service.ApiService;
+import com.example.netcine.service.FilmesResponse;
+import com.example.netcine.service.FilmesResult;
 
 public class HomeFragment extends Fragment {
     RecyclerView rvHomeLancamentos;
-    RecyclerView rvHomeCinema;
     RecyclerView rvHomeSeriesRecentes;
-    AdapterFilme adapterFilme;AdapterFilme serie;AdapterFilme cinema;
+    AdapterFilme adapterFilme;
+    AdapterFilme adapterSerie;
+    final String apiKEY = "6ee08abf792ae460668806133c782b4c";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        rvHomeLancamentos = root.findViewById(R.id.rvHomeLancamentos);
-        rvHomeCinema = root.findViewById(R.id.rvHomeCinema);
-        rvHomeSeriesRecentes = root.findViewById(R.id.rvHomeSeriesRecentes);
+
+
+        //configurar recyclerview e o adapter de filmes populares
+        confgRVFilmesLancamentos(view);
+        //buscar filmes populares e adicionar no adapter
+        buscarFilmesPopulares();
+
+        //configurar recyclerview e o adapter de series populares
+        confgRVSeriesLancamentos(view);
+        buscarSeriesPopulares();
+
+
+
+
+
+        return view;
+    }
+
+    private void confgRVSeriesLancamentos(View view) {
+        rvHomeSeriesRecentes = view.findViewById(R.id.rvHomeSeriesRecentes);
+
+        adapterSerie = new AdapterFilme(getContext());
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+        layoutManager1.setReverseLayout(false);
+        layoutManager1.setOrientation(RecyclerView.HORIZONTAL);
+
+        rvHomeSeriesRecentes.setAdapter(adapterSerie);
+        rvHomeSeriesRecentes.setLayoutManager(layoutManager1);
+    }
+
+    private void confgRVFilmesLancamentos(View view) {
+        rvHomeLancamentos = view.findViewById(R.id.rvHomeLancamentos);
 
         adapterFilme = new AdapterFilme(getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -36,73 +74,54 @@ public class HomeFragment extends Fragment {
 
         rvHomeLancamentos.setAdapter(adapterFilme);
         rvHomeLancamentos.setLayoutManager(layoutManager);
-
-        //teste
-         serie = new AdapterFilme(getContext());
-         cinema = new AdapterFilme(getContext());
-
-
-
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
-        layoutManager1.setReverseLayout(false);
-        layoutManager1.setOrientation(RecyclerView.HORIZONTAL);
-        rvHomeSeriesRecentes.setLayoutManager(layoutManager1);
-        rvHomeSeriesRecentes.setAdapter(serie);
-
-
-        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
-        layoutManager2.setReverseLayout(false);
-        layoutManager2.setOrientation(RecyclerView.HORIZONTAL);
-        rvHomeCinema.setLayoutManager(layoutManager2);
-        rvHomeCinema.setAdapter(cinema);
-
-        buscarFilmesLancamentos();
-
-
-
-        return root;
     }
 
-    private void buscarFilmesLancamentos() {
-        Filme f1 = new Filme();
-        Filme f2 = new Filme();
-        Filme f3 = new Filme();
-        Filme f4 = new Filme();
-        Filme f5 = new Filme();
-        Filme f6 = new Filme();
-        Filme f7 = new Filme();
-        Filme f8 = new Filme();
-        Filme f9 = new Filme();
-        Filme f10 = new Filme();
-        Filme f11 = new Filme();
+    private void buscarFilmesPopulares() {
+        ApiService.getInstanceRetrofit().obterFilmesPopulares(apiKEY)
+                .enqueue(new Callback<FilmesResult>() {
+                    @Override
+                    public void onResponse(Call<FilmesResult> call, Response<FilmesResult> response) {
+                        if (response.isSuccessful()) {
 
-        adapterFilme.add(f1);
-        adapterFilme.notifyDataSetChanged();
+                            for (FilmesResponse f : response.body().getResultadoFilmes()) {
+                                Filme filme = new Filme();
+                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setTituloFilme(f.getTituloOriginal());
 
-        serie.add(f1);serie.add(f2);serie.add(f3);serie.add(f4);serie.add(f5);serie.add(f6);serie.add(f7);
-        cinema.add(f1);cinema.add(f2);cinema.add(f3);cinema.add(f4);cinema.add(f5);cinema.add(f6);cinema.add(f7);
+                                adapterFilme.add(filme);
+                            }
+                        }
+                    }
 
-
-        adapterFilme.add(f2);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f3);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f4);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f5);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f6);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f7);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f8);
-        adapterFilme.notifyDataSetChanged();
-
-        adapterFilme.add(f9);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f10);
-        adapterFilme.notifyDataSetChanged();
-        adapterFilme.add(f11);
-        adapterFilme.notifyDataSetChanged();
+                    @Override
+                    public void onFailure(Call<FilmesResult> call, Throwable t) {
+                        Log.i("teste", "erro: " + t.getMessage());
+                    }
+                });
     }
+
+    private void buscarSeriesPopulares() {
+        ApiService.getInstanceRetrofit().obterSeriesPopulares(apiKEY)
+                .enqueue(new Callback<FilmesResult>() {
+                    @Override
+                    public void onResponse(Call<FilmesResult> call, Response<FilmesResult> response) {
+                        if (response.isSuccessful()) {
+
+                            for (FilmesResponse f : response.body().getResultadoFilmes()) {
+                                Filme filme = new Filme();
+                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setTituloFilme(f.getNomeSerie());
+
+                                adapterSerie.add(filme);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<FilmesResult> call, Throwable t) {
+
+                    }
+                });
+    }
+
 }

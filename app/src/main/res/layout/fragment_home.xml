@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp">
@@ -26,7 +26,7 @@
                 android:src="@drawable/logo_sem_nome" />
 
             <TextView
-                android:layout_width="250dp"
+                android:layout_width="350dp"
                 android:textColor="@color/colorBranco"
                 android:layout_height="wrap_content"
                 android:text="Só aqui no NetCine você pode descobrir milhões de filmes e series, faça sua busca!"
@@ -41,8 +41,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lançamento"
+                android:text="Filmes Populares"
                 android:textSize="17sp"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/colorBranco"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"/>
@@ -51,45 +52,25 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeLancamentos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filmes Cinema"
-                android:textSize="17sp"
-                android:textColor="@color/colorBranco"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHomeCinema"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="225dp"
                 android:orientation="horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Series recentes"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/colorBranco"
                 android:textStyle="bold"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"/>
+                android:textSize="17sp"/>
 
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeSeriesRecentes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"/>
-
-
-
-
-
+                android:layout_height="250dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="40dp"/>
 
 
         </LinearLayout>

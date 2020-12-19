@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+
 public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFilme> {
     private ArrayList<Filme> listFilmes;
     private Context getContext;
@@ -28,6 +29,14 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
         this.getContext = getContext;
     }
 
+    public ArrayList<Filme> getListFilmes() {
+        return listFilmes;
+    }
+
+    public void setListFilmes(ArrayList<Filme> listFilmes) {
+        this.listFilmes = listFilmes;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -65,24 +74,31 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
             imgFilme = itemView.findViewById(R.id.imgFilme);
 
 
-            imgFilme.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //abrir nova tela
                     Intent intent = new Intent(getContext, DetalhesFilmeActivity.class);
-                    intent.putExtra("filme",listFilmes.get(getAdapterPosition()));
+                    intent.putExtra("filme", listFilmes.get(getAdapterPosition()));
                     getContext.startActivity(intent);
                 }
             });
 
-
         }
-
 
 
         private void setDados(final Filme fi) {
             //setar os dados
-        }
+            if(fi.getTituloFilme().length() >= 12) {
+                String nome = fi.getTituloFilme().substring(0, 12)+"...";
+                tituloFilme.setText(nome);
+            }else {
+                tituloFilme.setText(fi.getTituloFilme());
+            }
+                Picasso.get().load("https://image.tmdb.org/t/p/w342/" + fi.getCaminhoPosterFilme()).into(imgFilme);
 
+
+        }
 
 
     }

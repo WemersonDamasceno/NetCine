@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.3'
     //retrofit
     implementation'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //moshi
+    implementation 'com.squareup.retrofit2:converter-moshi:2.4.0'
 
 }

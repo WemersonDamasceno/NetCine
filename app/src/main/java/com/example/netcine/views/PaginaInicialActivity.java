@@ -28,6 +28,11 @@ public class PaginaInicialActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
+        if(navView.getSelectedItemId()== R.id.navigation_home){
+            getSupportActionBar().hide();
+        }
+
+
     }
 
 }
