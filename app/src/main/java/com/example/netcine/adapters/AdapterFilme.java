@@ -63,8 +63,7 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
     }
 
     public void apagarList() {
-        ArrayList<Filme> listVazia = new ArrayList<>();
-        listFilmes = listVazia;
+        listFilmes = new ArrayList<>();
         notifyDataSetChanged();
     }
 
@@ -101,7 +100,7 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
             }else {
                 tituloFilme.setText(fi.getTituloFilme());
             }
-                Picasso.get().load("https://image.tmdb.org/t/p/w342/" + fi.getCaminhoPosterFilme()).into(imgFilme);
+                Picasso.get().load("https://image.tmdb.org/t/p/w342/" + fi.getUrlPoster()).into(imgFilme);
 
 
         }

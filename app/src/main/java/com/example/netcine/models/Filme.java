@@ -5,30 +5,25 @@ import android.os.Parcelable;
 
 public class Filme implements Parcelable {
     String tituloFilme;
-    String caminhoPosterFilme;
+    String urlPoster;
     String descricaoFilme;
     String idFilme;
     double notaFilme;
+    String dataLancamento;
+    String linguagem;
     boolean favoritoFilme;
-
-    public Filme(String tituloFilme, String caminhoPosterFilme, String descricaoFilme, String idFilme, double notaFilme, boolean favoritoFilme) {
-        this.tituloFilme = tituloFilme;
-        this.caminhoPosterFilme = caminhoPosterFilme;
-        this.descricaoFilme = descricaoFilme;
-        this.idFilme = idFilme;
-        this.notaFilme = notaFilme;
-        this.favoritoFilme = favoritoFilme;
-    }
 
     public Filme() {
     }
 
     protected Filme(Parcel in) {
         tituloFilme = in.readString();
-        caminhoPosterFilme = in.readString();
+        urlPoster = in.readString();
         descricaoFilme = in.readString();
         idFilme = in.readString();
         notaFilme = in.readDouble();
+        dataLancamento = in.readString();
+        linguagem = in.readString();
         favoritoFilme = in.readByte() != 0;
     }
 
@@ -52,12 +47,12 @@ public class Filme implements Parcelable {
         this.tituloFilme = tituloFilme;
     }
 
-    public String getCaminhoPosterFilme() {
-        return caminhoPosterFilme;
+    public String getUrlPoster() {
+        return urlPoster;
     }
 
-    public void setCaminhoPosterFilme(String caminhoPosterFilme) {
-        this.caminhoPosterFilme = caminhoPosterFilme;
+    public void setUrlPoster(String urlPoster) {
+        this.urlPoster = urlPoster;
     }
 
     public String getDescricaoFilme() {
@@ -84,11 +79,38 @@ public class Filme implements Parcelable {
         this.notaFilme = notaFilme;
     }
 
+    public String getDataLancamento() {
+        return dataLancamento;
+    }
+
+    public void setDataLancamento(String dataLancamento) {
+        this.dataLancamento = dataLancamento;
+    }
+
+    public String getLinguagem() {
+        return linguagem;
+    }
+
+    public void setLinguagem(String linguagem) {
+        this.linguagem = linguagem;
+    }
+
     public boolean isFavoritoFilme() {
         return favoritoFilme;
     }
 
     public void setFavoritoFilme(boolean favoritoFilme) {
+        this.favoritoFilme = favoritoFilme;
+    }
+
+    public Filme(String tituloFilme, String urlPoster, String descricaoFilme, String idFilme, double notaFilme, String dataLancamento, String linguagem, boolean favoritoFilme) {
+        this.tituloFilme = tituloFilme;
+        this.urlPoster = urlPoster;
+        this.descricaoFilme = descricaoFilme;
+        this.idFilme = idFilme;
+        this.notaFilme = notaFilme;
+        this.dataLancamento = dataLancamento;
+        this.linguagem = linguagem;
         this.favoritoFilme = favoritoFilme;
     }
 
@@ -100,10 +122,12 @@ public class Filme implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(tituloFilme);
-        parcel.writeString(caminhoPosterFilme);
+        parcel.writeString(urlPoster);
         parcel.writeString(descricaoFilme);
         parcel.writeString(idFilme);
         parcel.writeDouble(notaFilme);
+        parcel.writeString(dataLancamento);
+        parcel.writeString(linguagem);
         parcel.writeByte((byte) (favoritoFilme ? 1 : 0));
     }
 }

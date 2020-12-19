@@ -81,12 +81,19 @@ public class HomeFragment extends Fragment {
                 .enqueue(new Callback<FilmesResult>() {
                     @Override
                     public void onResponse(Call<FilmesResult> call, Response<FilmesResult> response) {
-                        if (response.isSuccessful()) {
 
+                        if (response.isSuccessful()) {
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getTituloOriginal());
+
+                                filme.setNotaFilme(f.getNota());
+                                filme.setDataLancamento(f.getLancamento());
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
+
 
                                 adapterFilme.add(filme);
                             }
@@ -109,8 +116,19 @@ public class HomeFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getNomeSerie());
+
+
+                                filme.setNotaFilme(f.getNota());
+                                if(f.getLancamento()==null){
+                                    filme.setDataLancamento(f.getDataLancSerie());
+                                }else {
+                                    filme.setDataLancamento(f.getLancamento());
+                                }
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
 
                                 adapterSerie.add(filme);
                             }

@@ -94,8 +94,19 @@ public class SeriesFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getNomeSerie());
+
+
+                                filme.setNotaFilme(f.getNota());
+                                if(f.getLancamento()==null){
+                                    filme.setDataLancamento(f.getDataLancSerie());
+                                }else {
+                                    filme.setDataLancamento(f.getLancamento());
+                                }
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
 
                                 adapterSeries.add(filme);
                             }
@@ -118,8 +129,15 @@ public class SeriesFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getNomeSerie());
+
+
+                                filme.setNotaFilme(f.getNota());
+                                filme.setDataLancamento(f.getLancamento());
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
 
                                 adapterSeries.add(filme);
                             }

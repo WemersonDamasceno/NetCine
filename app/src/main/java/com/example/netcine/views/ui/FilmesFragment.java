@@ -94,8 +94,14 @@ public class FilmesFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getTituloOriginal());
+
+                                filme.setNotaFilme(f.getNota());
+                                filme.setDataLancamento(f.getLancamento());
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
 
                                 adapterFilme.add(filme);
                             }
@@ -118,8 +124,14 @@ public class FilmesFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setCaminhoPosterFilme(f.getCaminhoPoster());
+                                filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getTituloOriginal());
+
+                                filme.setNotaFilme(f.getNota());
+                                filme.setDataLancamento(f.getLancamento());
+                                filme.setIdFilme(f.getIdResponse()+"");
+                                filme.setLinguagem(f.getLinguagem());
+                                filme.setDescricaoFilme(f.getDescricao());
 
                                 adapterFilme.add(filme);
                             }
