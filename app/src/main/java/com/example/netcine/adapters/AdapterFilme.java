@@ -62,6 +62,12 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolderFi
         notifyDataSetChanged();
     }
 
+    public void apagarList() {
+        ArrayList<Filme> listVazia = new ArrayList<>();
+        listFilmes = listVazia;
+        notifyDataSetChanged();
+    }
+
 
     class ViewHolderFilme extends RecyclerView.ViewHolder {
         TextView tituloFilme;

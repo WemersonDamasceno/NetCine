@@ -60,9 +60,13 @@ public class FilmesFragment extends Fragment {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getItemId() == R.id.semana) {
+                            limparAdapter();
+                            btnOrdenar.setText("Semana");
                             //OrdenarMes
                             ordenarFilmes("week");
                         } else if (item.getItemId() == R.id.dia) {
+                            limparAdapter();
+                            btnOrdenar.setText("Dia");
                             //OrdenarDia
                             ordenarFilmes("day");
                             adapterFilme.notifyDataSetChanged();
@@ -75,6 +79,10 @@ public class FilmesFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void limparAdapter() {
+        adapterFilme.apagarList();
     }
 
     private void ordenarFilmes(String time_window) {
