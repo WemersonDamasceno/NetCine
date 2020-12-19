@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.ui.FilmesFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".views.ui.FilmesFragment">
 
 
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPreto"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:layout_margin="10dp"
-        android:text="Filmes"/>
+        android:text="Filmes"
+        android:textColor="@color/colorPreto"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
+
+    <Button
+        android:id="@+id/btnOrdenar"
+        android:layout_width="50dp"
+        android:textSize="15sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorBranco"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/borda_arrendondados"
+        android:text="sort"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFilmes"
+        android:layout_below="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rvFilmes"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="match_parent" />
 
 
-
-
-
-</LinearLayout>
+</RelativeLayout>

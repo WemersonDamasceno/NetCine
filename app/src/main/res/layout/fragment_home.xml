@@ -52,13 +52,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeLancamentos"
                 android:layout_width="match_parent"
-                android:layout_height="225dp"
+                android:layout_height="230dp"
                 android:orientation="horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Series recentes"
+                android:text="Series populares"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/colorBranco"
                 android:textStyle="bold"
