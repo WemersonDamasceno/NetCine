@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netcine.R;
 import com.example.netcine.adapters.AdapterFilme;
+import com.example.netcine.models.Convert;
 import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
 import com.example.netcine.service.FilmesResponse;
@@ -94,16 +95,11 @@ public class FilmesFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setUrlPoster(f.getUrlImgPoster());
-                                filme.setTituloFilme(f.getTituloOriginal());
 
-                                filme.setNotaFilme(f.getNota());
-                                filme.setDataLancamento(f.getLancamento());
-                                filme.setIdFilme(f.getIdResponse()+"");
-                                filme.setLinguagem(f.getLinguagem());
-                                filme.setDescricaoFilme(f.getDescricao());
 
-                                adapterFilme.add(filme);
+                                Convert.converterClassFilmeSerie(filme,f,adapterFilme);
+
+
                             }
                         }
                     }

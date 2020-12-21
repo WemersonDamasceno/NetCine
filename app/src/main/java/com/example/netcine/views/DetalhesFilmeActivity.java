@@ -58,8 +58,6 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
 
         try {
             detalheMidia = getIntent().getParcelableExtra("filme");
-            tvTituloDescricao.setText(detalheMidia.getTituloFilme());
-            Log.i("teste", "id: " + detalheMidia.getIdFilme());
             setarDados();
 
         } catch (Exception e) {
@@ -75,6 +73,8 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
                 Toast.makeText(DetalhesFilmeActivity.this, "Você marcou como favorito!", Toast.LENGTH_SHORT).show();
                 favoritar.setVisibility(View.GONE);
                 desfavoritar.setVisibility(View.VISIBLE);
+                //ver se é filme e favoritar como filme
+                //se nao for filme favoritar como serie
                 favoritarFilme();
             }
         });
@@ -126,6 +126,7 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        //voltar com animacao ????
         startActivity(new Intent(this,PaginaInicialActivity.class));
         super.onDestroy();
     }

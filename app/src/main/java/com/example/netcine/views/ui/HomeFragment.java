@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netcine.R;
 import com.example.netcine.adapters.AdapterFilme;
+import com.example.netcine.models.Convert;
 import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
 import com.example.netcine.service.FilmesResponse;
@@ -87,7 +88,11 @@ public class HomeFragment extends Fragment {
                         if (response.isSuccessful()) {
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setUrlPoster(f.getUrlImgPoster());
+
+                               Convert.converterClassFilmeSerie(filme,f,adapterFilme);
+
+
+                                /*filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getTituloOriginal());
 
                                 filme.setNotaFilme(f.getNota());
@@ -95,9 +100,7 @@ public class HomeFragment extends Fragment {
                                 filme.setIdFilme(f.getIdResponse()+"");
                                 filme.setLinguagem(f.getLinguagem());
                                 filme.setDescricaoFilme(f.getDescricao());
-
-
-                                adapterFilme.add(filme);
+                                adapterFilme.add(filme);*/
                             }
                         }
                     }
@@ -118,21 +121,9 @@ public class HomeFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-                                filme.setUrlPoster(f.getUrlImgPoster());
-                                filme.setTituloFilme(f.getNomeSerie());
 
+                                Convert.converterClassFilmeSerie(filme,f,adapterSerie);
 
-                                filme.setNotaFilme(f.getNota());
-                                if(f.getLancamento()==null){
-                                    filme.setDataLancamento(f.getDataLancSerie());
-                                }else {
-                                    filme.setDataLancamento(f.getLancamento());
-                                }
-                                filme.setIdFilme(f.getIdResponse()+"");
-                                filme.setLinguagem(f.getLinguagem());
-                                filme.setDescricaoFilme(f.getDescricao());
-
-                                adapterSerie.add(filme);
                             }
                         }
                     }

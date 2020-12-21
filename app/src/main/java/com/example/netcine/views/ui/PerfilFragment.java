@@ -1,6 +1,7 @@
 package com.example.netcine.views.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.netcine.DAO.FavoritoDAO;
 import com.example.netcine.R;
 import com.example.netcine.adapters.AdapterFilme;
+import com.example.netcine.models.Convert;
 import com.example.netcine.models.FavoritoFS;
 import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
@@ -39,7 +41,6 @@ public class PerfilFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class PerfilFragment extends Fragment {
         listFilmes = new ArrayList<>();
         rvFilmesFavoritos = view.findViewById(R.id.rvFilmesFavoritos);
         adapterFilme = new AdapterFilme(getContext());
-        GridLayoutManager manager = new GridLayoutManager(getContext(),2);
+        GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
         manager.setOrientation(RecyclerView.VERTICAL);
         manager.setReverseLayout(false);
         favoritoDAO = new FavoritoDAO(getContext());
@@ -64,56 +65,27 @@ public class PerfilFragment extends Fragment {
         return view;
     }
 
-    private void checarSeFilmeFavorito() {
-        //receber todos os favoritos do banco
+    private void buscarFilmes() {
         listFavoritos = favoritoDAO.getListFavoritos();
+        for (FavoritoFS f : listFavoritos) {
+            ApiService.getInstanceRetrofit().getFilme(Integer.parseInt(f.getIdFilme()), api_key)
+                    .enqueue(new Callback<FilmesResponse>() {
+                        @Override
+                        public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
+                            FilmesResponse fR = response.body();
+                            Filme filme = new Filme();
 
-        for(FavoritoFS f : listFavoritos){
-            if(f.getIdUsuario().equals(FirebaseAuth.getInstance().getUid())){
-                for(Filme f1 : listFilmes){
-                    if(f.getIdFilme().equals(f1.getIdFilme())){
-                        adapterFilme.add(f1);
-                    }
-                }
-            }
+                            Convert.converterClassFilmeSerie(filme,fR,adapterFilme);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<FilmesResponse> call, Throwable t) {
+
+                        }
+                    });
         }
 
-    }
-
-    private void buscarFilmes() {
-        //Obter todos os filmes, e todas as series
-        //Ainda falta os melhores filmes da semana e do dia, e as series
-        ApiService.getInstanceRetrofit().obterFilmesPopulares(api_key)
-                .enqueue(new Callback<FilmesResult>() {
-                    @Override
-                    public void onResponse(Call<FilmesResult> call, Response<FilmesResult> response) {
-                        if (response.isSuccessful()) {
-
-                            for (FilmesResponse f : response.body().getResultadoFilmes()) {
-                                Filme filme = new Filme();
-                                filme.setUrlPoster(f.getUrlImgPoster());
-                                filme.setTituloFilme(f.getTituloOriginal());
-
-                                filme.setNotaFilme(f.getNota());
-                                filme.setDataLancamento(f.getLancamento());
-                                filme.setIdFilme(f.getIdResponse()+"");
-                                filme.setLinguagem(f.getLinguagem());
-                                filme.setDescricaoFilme(f.getDescricao());
-
-                                listFilmes.add(filme);
-
-                                //adapterFilme.add(filme);
-                            }
-
-                            checarSeFilmeFavorito();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<FilmesResult> call, Throwable t) {
-
-                    }
-                });
 
     }
 }

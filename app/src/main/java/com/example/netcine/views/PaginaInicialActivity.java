@@ -1,9 +1,11 @@
 package com.example.netcine.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.netcine.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -19,6 +21,11 @@ public class PaginaInicialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pagina_inicial);
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
+
+        if(FirebaseAuth.getInstance().getUid() == null){
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
+        }
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_filmes, R.id.navigation_series)
