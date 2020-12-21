@@ -1,6 +1,7 @@
 package com.example.netcine.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.netcine.R;
 import com.example.netcine.models.Filme;
 import com.example.netcine.views.DetalhesFilmeActivity;
+import com.example.netcine.views.ui.PerfilFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

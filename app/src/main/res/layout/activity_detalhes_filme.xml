@@ -101,6 +101,7 @@
         android:layout_marginTop="10dp"/>
 
     <TextView
+        android:id="@+id/txtFavoritar"
         android:text="Favoritar "
         android:layout_below="@+id/tvPopularidade"
         android:layout_toEndOf="@+id/imgFilmeDescricao"
@@ -108,7 +109,7 @@
         android:textColor="@color/colorBranco"
         android:textStyle="bold"
         android:layout_marginTop="30dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -118,7 +119,17 @@
         android:layout_height="40dp"
         android:layout_below="@+id/tvPopularidade"
         android:src="@drawable/ic_baseline_star_border_24"
-        android:layout_toEndOf="@+id/tvPopularidade"
+        android:layout_toEndOf="@+id/txtFavoritar"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:id="@+id/ic_estrelaMarcada"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_below="@+id/tvPopularidade"
+        android:src="@drawable/ic_estrela_marcada"
+        android:layout_toEndOf="@+id/txtFavoritar"
         android:layout_marginTop="20dp"/>
 
 
@@ -127,11 +138,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="      After leaving their cave, the Croods encounter their biggest threat since leaving: another family called the Bettermans, who claim and show to be better and evolved. Grug grows suspicious of the Betterman parents, Phil and Hope,  as they secretly plan to break up his daughter Eep with her loving boyfriend Guy to ensure that their daughter Dawn has a loving and smart partner to protect her."
         android:layout_marginStart="20dp"
-        android:layout_below="@+id/imgFilmeDescricao"
+        android:layout_below="@+id/txtFavoritar"
         android:textColor="@color/colorBranco"
         android:textSize="17sp"/>
 

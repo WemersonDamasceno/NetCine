@@ -52,6 +52,8 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+
+
     private void confgRVSeriesLancamentos(View view) {
         rvHomeSeriesRecentes = view.findViewById(R.id.rvHomeSeriesRecentes);
 

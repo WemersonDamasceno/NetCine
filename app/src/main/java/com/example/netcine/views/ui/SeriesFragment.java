@@ -19,6 +19,7 @@ import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
 import com.example.netcine.service.FilmesResponse;
 import com.example.netcine.service.FilmesResult;
+import com.example.netcine.views.PaginaInicialActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

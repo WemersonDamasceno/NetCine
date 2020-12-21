@@ -9,6 +9,8 @@ public class FilmesResult {
     @Json(name = "results")
     private final List<FilmesResponse> resultadoFilmes;
 
+
+
     public FilmesResult(List<FilmesResponse> resultadoFilmes) {
         this.resultadoFilmes = resultadoFilmes;
     }
@@ -16,4 +18,6 @@ public class FilmesResult {
     public List<FilmesResponse> getResultadoFilmes() {
         return resultadoFilmes;
     }
+
+
 }

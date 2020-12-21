@@ -3,12 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorCinzaEscuro"
     tools:context=".views.ui.PerfilFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <ImageView
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+           android:layout_gravity="center"
+           android:src="@drawable/ic_perfil"/>
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Favoritos: "
+           android:textSize="21sp"
+           android:textStyle="bold"
+           android:textColor="@color/colorBranco"/>
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rvFilmesFavoritos"
+           android:layout_width="match_parent"
+           android:layout_marginTop="20dp"
+           android:layout_height="wrap_content"/>
+
+
+
+   </LinearLayout>
+
+
 
 </FrameLayout>
