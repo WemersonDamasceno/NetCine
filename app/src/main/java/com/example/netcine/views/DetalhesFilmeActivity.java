@@ -55,6 +55,7 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
 
         favoritoDAO = new FavoritoDAO(this);
 
+
         try {
             detalheMidia = getIntent().getParcelableExtra("filme");
             setarDados();
@@ -88,6 +89,8 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private void desfavoritarFilme() {
         favoritoDAO.desfavoritarFilmeSQLite(detalheMidia);

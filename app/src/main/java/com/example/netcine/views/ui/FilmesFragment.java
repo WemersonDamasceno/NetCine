@@ -123,7 +123,7 @@ public class FilmesFragment extends Fragment {
                                 Filme filme = new Filme();
                                 filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getTituloOriginal());
-
+                                filme.setTipoMidia("filme");
                                 filme.setNotaFilme(f.getNota());
                                 filme.setDataLancamento(f.getLancamento());
                                 filme.setIdFilme(f.getIdResponse()+"");

@@ -47,9 +47,6 @@ public class HomeFragment extends Fragment {
         buscarSeriesPopulares();
 
 
-
-
-
         return view;
     }
 

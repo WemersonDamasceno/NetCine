@@ -1,9 +1,5 @@
 package com.example.netcine.views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,18 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.netcine.R;
 import com.example.netcine.models.User;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.UUID;
 
 public class CriarContaActivity extends AppCompatActivity {
     EditText edNomeNovo;
@@ -101,7 +97,7 @@ public class CriarContaActivity extends AppCompatActivity {
         final User usuario = new User();
         usuario.setNomeUser(nome);
         usuario.setEmailUser(email);
-        usuario.setIdUser(FirebaseAuth.getInstance().getUid());
+
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,senha)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -109,6 +105,7 @@ public class CriarContaActivity extends AppCompatActivity {
                     public void onSuccess(AuthResult authResult) {
                         Log.i("teste","Atentificação bem sucedida.");
                         //salvar usuario no banco
+                        usuario.setIdUser(FirebaseAuth.getInstance().getUid());
                         salvarUsuarioFB(usuario);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -128,6 +125,7 @@ public class CriarContaActivity extends AppCompatActivity {
     }
 
     private void salvarUsuarioFB(User usuario) {
+        usuario.setIdUser(FirebaseAuth.getInstance().getUid());
         FirebaseFirestore.getInstance().collection("users/")
                 .add(usuario)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -145,11 +143,6 @@ public class CriarContaActivity extends AppCompatActivity {
                 alertDialog.setMessage(e.getMessage());
                 alertDialog.setPositiveButton("Ok",null);
                 alertDialog.show();
-            }
-        }).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentReference> task) {
-                finish();
             }
         });
     }

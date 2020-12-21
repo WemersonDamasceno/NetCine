@@ -77,38 +77,40 @@ public class PerfilFragment extends Fragment {
 
     }
 
-    private void buscarSerieAPI(FavoritoFS f) {
+    private void buscarSerieAPI(final FavoritoFS f) {
         ApiService.getInstanceRetrofit().getSerie(Integer.parseInt(f.getIdFilme()), api_key)
                 .enqueue(new Callback<FilmesResponse>() {
                     @Override
                     public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
                         FilmesResponse fR = response.body();
                         Filme filme = new Filme();
-                        filme.setTipoMidia("serie");
-                        Log.i("teste", "tipo midia: "+filme.getTipoMidia());
+
+                        Log.i("teste", "tipo midia: "+f.getTipo_midia());
                         Convert.converterClassFilmeSerie(filme, fR, adapterFilme);
                     }
 
                     @Override
                     public void onFailure(Call<FilmesResponse> call, Throwable t) {
+                        Log.i("teste","Erro: "+t.getMessage());
                     }
                 });
     }
 
-    private void buscarFilmeAPI(FavoritoFS f) {
+    private void buscarFilmeAPI(final FavoritoFS f) {
         ApiService.getInstanceRetrofit().getFilme(Integer.parseInt(f.getIdFilme()), api_key)
                 .enqueue(new Callback<FilmesResponse>() {
                     @Override
                     public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
                         FilmesResponse fR = response.body();
                         Filme filme = new Filme();
-                        Log.i("teste", "tipo midia: "+filme.getTipoMidia());
+                        Log.i("teste", "tipo midia: "+f.getTipo_midia());
 
                         Convert.converterClassFilmeSerie(filme, fR, adapterFilme);
                     }
 
                     @Override
                     public void onFailure(Call<FilmesResponse> call, Throwable t) {
+                        Log.i("teste","Erro: "+t.getMessage());
                     }
                 });
     }

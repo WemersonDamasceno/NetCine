@@ -123,7 +123,7 @@ public class SeriesFragment extends Fragment {
                                 Filme filme = new Filme();
                                 filme.setUrlPoster(f.getUrlImgPoster());
                                 filme.setTituloFilme(f.getNomeSerie());
-
+                                filme.setTipoMidia("serie");
 
                                 filme.setNotaFilme(f.getNota());
                                 filme.setDataLancamento(f.getLancamento());
