@@ -1,18 +1,13 @@
 package com.example.netcine.views.ui;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.netcine.DAO.FavoritoDAO;
 import com.example.netcine.R;
@@ -22,7 +17,6 @@ import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
 import com.example.netcine.service.FilmesResponse;
 import com.example.netcine.service.FilmesResult;
-import com.example.netcine.views.DetalhesFilmeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

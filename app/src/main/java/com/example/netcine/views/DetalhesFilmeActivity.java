@@ -2,7 +2,10 @@ package com.example.netcine.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Parcel;
 import android.util.Log;
 import android.view.View;
@@ -39,6 +42,7 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_filme);
         getSupportActionBar().hide();
+
 
 
         imgFilmePoster = findViewById(R.id.imgFilmeDescricao);
@@ -117,5 +121,12 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         tvLancamento.setText(detalheMidia.getDataLancamento());
         tvPopularidade.setText(detalheMidia.getNotaFilme() + "");
         tvResumoDescricao.setText(detalheMidia.getDescricaoFilme());
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        startActivity(new Intent(this,PaginaInicialActivity.class));
+        super.onDestroy();
     }
 }
