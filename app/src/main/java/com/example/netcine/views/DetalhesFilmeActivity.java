@@ -34,7 +34,6 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
     FavoritoDAO favoritoDAO;
 
     ArrayList<FavoritoFS> filmesFavoritos;
-    final String apiKEY = "6ee08abf792ae460668806133c782b4c";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +117,7 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         tvTituloDescricao.setText(detalheMidia.getTituloFilme());
         tvLinguagem.setText(detalheMidia.getLinguagem());
         tvLancamento.setText(detalheMidia.getDataLancamento());
-        tvPopularidade.setText(detalheMidia.getNotaFilme() + "");
+        tvPopularidade.setText(String.valueOf(detalheMidia.getNotaFilme()));
         tvResumoDescricao.setText(detalheMidia.getDescricaoFilme());
     }
 
