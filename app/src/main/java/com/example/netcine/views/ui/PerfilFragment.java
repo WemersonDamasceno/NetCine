@@ -18,8 +18,6 @@ import com.example.netcine.models.FavoritoFS;
 import com.example.netcine.models.Filme;
 import com.example.netcine.service.ApiService;
 import com.example.netcine.service.FilmesResponse;
-import com.example.netcine.service.FilmesResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -67,25 +65,51 @@ public class PerfilFragment extends Fragment {
 
     private void buscarFilmes() {
         listFavoritos = favoritoDAO.getListFavoritos();
+        //pegar todos os filmes favoritos
         for (FavoritoFS f : listFavoritos) {
-            ApiService.getInstanceRetrofit().getFilme(Integer.parseInt(f.getIdFilme()), api_key)
-                    .enqueue(new Callback<FilmesResponse>() {
-                        @Override
-                        public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
-                            FilmesResponse fR = response.body();
-                            Filme filme = new Filme();
-
-                            Convert.converterClassFilmeSerie(filme,fR,adapterFilme);
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<FilmesResponse> call, Throwable t) {
-
-                        }
-                    });
+            //é serie ou filme ?
+            if(f.getTipo_midia().equals("filme")) {
+               buscarFilmeAPI(f);
+            }else if(f.getTipo_midia().equals("serie")){
+                buscarSerieAPI(f);
+            }
         }
 
+    }
 
+    private void buscarSerieAPI(FavoritoFS f) {
+        ApiService.getInstanceRetrofit().getSerie(Integer.parseInt(f.getIdFilme()), api_key)
+                .enqueue(new Callback<FilmesResponse>() {
+                    @Override
+                    public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
+                        FilmesResponse fR = response.body();
+                        Filme filme = new Filme();
+                        filme.setTipoMidia("serie");
+                        Log.i("teste", "tipo midia: "+filme.getTipoMidia());
+                        Convert.converterClassFilmeSerie(filme, fR, adapterFilme);
+                    }
+
+                    @Override
+                    public void onFailure(Call<FilmesResponse> call, Throwable t) {
+                    }
+                });
+    }
+
+    private void buscarFilmeAPI(FavoritoFS f) {
+        ApiService.getInstanceRetrofit().getFilme(Integer.parseInt(f.getIdFilme()), api_key)
+                .enqueue(new Callback<FilmesResponse>() {
+                    @Override
+                    public void onResponse(Call<FilmesResponse> call, Response<FilmesResponse> response) {
+                        FilmesResponse fR = response.body();
+                        Filme filme = new Filme();
+                        Log.i("teste", "tipo midia: "+filme.getTipoMidia());
+
+                        Convert.converterClassFilmeSerie(filme, fR, adapterFilme);
+                    }
+
+                    @Override
+                    public void onFailure(Call<FilmesResponse> call, Throwable t) {
+                    }
+                });
     }
 }

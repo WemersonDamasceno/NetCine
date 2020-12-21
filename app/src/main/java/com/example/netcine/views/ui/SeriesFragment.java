@@ -97,6 +97,7 @@ public class SeriesFragment extends Fragment {
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
 
+                                filme.setTipoMidia("serie");
                                 Convert.converterClassFilmeSerie(filme,f,adapterSeries);
 
 

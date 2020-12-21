@@ -89,18 +89,9 @@ public class HomeFragment extends Fragment {
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
 
+                                filme.setTipoMidia("filme");
                                Convert.converterClassFilmeSerie(filme,f,adapterFilme);
 
-
-                                /*filme.setUrlPoster(f.getUrlImgPoster());
-                                filme.setTituloFilme(f.getTituloOriginal());
-
-                                filme.setNotaFilme(f.getNota());
-                                filme.setDataLancamento(f.getLancamento());
-                                filme.setIdFilme(f.getIdResponse()+"");
-                                filme.setLinguagem(f.getLinguagem());
-                                filme.setDescricaoFilme(f.getDescricao());
-                                adapterFilme.add(filme);*/
                             }
                         }
                     }
@@ -121,7 +112,7 @@ public class HomeFragment extends Fragment {
 
                             for (FilmesResponse f : response.body().getResultadoFilmes()) {
                                 Filme filme = new Filme();
-
+                                filme.setTipoMidia("serie");
                                 Convert.converterClassFilmeSerie(filme,f,adapterSerie);
 
                             }

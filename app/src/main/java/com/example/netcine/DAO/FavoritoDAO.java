@@ -30,6 +30,7 @@ public class FavoritoDAO {
         ContentValues values = new ContentValues();
         values.put("id_filme", filme.getIdFilme());
         values.put("id_user", FirebaseAuth.getInstance().getUid());
+        values.put("tipo_midia", filme.getTipoMidia());
         Log.i("teste","Adicionado com id do filme: "+filme.getIdFilme());
         banco.insert("favorito", null, values);
     }
@@ -39,13 +40,14 @@ public class FavoritoDAO {
 
         @SuppressLint("Recycle") Cursor cursor = banco.query(
                 "favorito",
-                new String[]{"id_user", "id_filme"},
+                new String[]{"id_user", "id_filme", "tipo_midia"},
                 null,null,null,null,null,null
         );
         while (cursor.moveToNext()){
             FavoritoFS favorito = new FavoritoFS();
             favorito.setIdUsuario(cursor.getString(0));
-            favorito.setFilmeFav(cursor.getString(1));
+            favorito.setIdFilme(cursor.getString(1));
+            favorito.setTipo_midia(cursor.getString(2));
 
             favoritos.add(favorito);
         }

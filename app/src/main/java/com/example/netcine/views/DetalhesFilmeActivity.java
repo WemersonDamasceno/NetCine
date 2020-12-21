@@ -1,12 +1,11 @@
 package com.example.netcine.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Parcel;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -59,6 +58,7 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
         try {
             detalheMidia = getIntent().getParcelableExtra("filme");
             setarDados();
+            Log.i("teste","tipo : "+detalheMidia.getTipoMidia());
 
         } catch (Exception e) {
             Log.i("teste", e.getMessage());
@@ -73,8 +73,6 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
                 Toast.makeText(DetalhesFilmeActivity.this, "Você marcou como favorito!", Toast.LENGTH_SHORT).show();
                 favoritar.setVisibility(View.GONE);
                 desfavoritar.setVisibility(View.VISIBLE);
-                //ver se é filme e favoritar como filme
-                //se nao for filme favoritar como serie
                 favoritarFilme();
             }
         });
@@ -93,7 +91,6 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
 
     private void desfavoritarFilme() {
         favoritoDAO.desfavoritarFilmeSQLite(detalheMidia);
-        recreate();
     }
 
     private void favoritarFilme() {
@@ -126,8 +123,9 @@ public class DetalhesFilmeActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        //voltar com animacao ????
-        startActivity(new Intent(this,PaginaInicialActivity.class));
+        Intent intent = new Intent(this,PaginaInicialActivity.class);
+        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_out);
+        ActivityCompat.startActivity(this, intent, activityOptionsCompat.toBundle());
         super.onDestroy();
     }
 }

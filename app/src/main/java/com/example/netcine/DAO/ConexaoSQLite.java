@@ -21,7 +21,8 @@ public class ConexaoSQLite extends SQLiteOpenHelper {
                     "create table favorito(" +
                     "id integer primary key autoincrement," +
                     "id_user varchar(50)," +
-                    "id_filme varchar (50))");
+                    "id_filme varchar (50)," +
+                    "tipo_midia varchar(50))");
     }
 
     @Override

@@ -10,16 +10,6 @@
 
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Filmes"
-        android:textColor="@color/colorBranco"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ordenar :"
@@ -44,9 +34,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilmes"
-        android:layout_below="@+id/text"
+        android:layout_below="@+id/btnOrdenar"
         android:layout_width="match_parent"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:layout_height="match_parent" />
 

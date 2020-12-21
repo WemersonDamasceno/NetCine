@@ -9,11 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.netcine.views.ui.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_filmes"
-            app:popUpTo="@id/navigation_filmes" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_filmes"
@@ -30,17 +26,11 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_buscar"
-        android:name="com.example.netcine.views.ui.BuscarFragment"
-        android:label="Buscar"
-        tools:layout="@layout/fragment_buscar" >
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_perfil"
         android:name="com.example.netcine.views.ui.PerfilFragment"
         android:label="Perfil"
         tools:layout="@layout/fragment_perfil" />
+
     <activity
         android:id="@+id/detalhesFilmeActivity"
         android:name="com.example.netcine.views.DetalhesFilmeActivity"

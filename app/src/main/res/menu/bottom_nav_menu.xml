@@ -16,10 +16,6 @@
         android:icon="@drawable/ic_series"
         android:title="@string/series" />
 
-    <item
-        android:id="@+id/navigation_buscar"
-        android:icon="@drawable/ic_buscar"
-        android:title="@string/buscar" />
 
     <item
         android:id="@+id/navigation_perfil"

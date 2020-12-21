@@ -12,6 +12,7 @@ public class Filme implements Parcelable {
     String dataLancamento;
     String linguagem;
     boolean favoritoFilme;
+    String tipoMidia;
 
     public Filme() {
     }
@@ -25,6 +26,7 @@ public class Filme implements Parcelable {
         dataLancamento = in.readString();
         linguagem = in.readString();
         favoritoFilme = in.readByte() != 0;
+        tipoMidia = in.readString();
     }
 
     public static final Creator<Filme> CREATOR = new Creator<Filme>() {
@@ -103,7 +105,15 @@ public class Filme implements Parcelable {
         this.favoritoFilme = favoritoFilme;
     }
 
-    public Filme(String tituloFilme, String urlPoster, String descricaoFilme, String idFilme, double notaFilme, String dataLancamento, String linguagem, boolean favoritoFilme) {
+    public String getTipoMidia() {
+        return tipoMidia;
+    }
+
+    public void setTipoMidia(String tipoMidia) {
+        this.tipoMidia = tipoMidia;
+    }
+
+    public Filme(String tituloFilme, String urlPoster, String descricaoFilme, String idFilme, double notaFilme, String dataLancamento, String linguagem, boolean favoritoFilme, String tipoMidia) {
         this.tituloFilme = tituloFilme;
         this.urlPoster = urlPoster;
         this.descricaoFilme = descricaoFilme;
@@ -112,6 +122,7 @@ public class Filme implements Parcelable {
         this.dataLancamento = dataLancamento;
         this.linguagem = linguagem;
         this.favoritoFilme = favoritoFilme;
+        this.tipoMidia = tipoMidia;
     }
 
     @Override
@@ -129,5 +140,6 @@ public class Filme implements Parcelable {
         parcel.writeString(dataLancamento);
         parcel.writeString(linguagem);
         parcel.writeByte((byte) (favoritoFilme ? 1 : 0));
+        parcel.writeString(tipoMidia);
     }
 }
