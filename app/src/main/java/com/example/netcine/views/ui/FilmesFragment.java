@@ -31,7 +31,7 @@ public class FilmesFragment extends Fragment {
     PopupMenu popupMenu;
     AdapterFilme adapterFilme;
     Button btnOrdenar;
-    String api_key = "6ee08abf792ae460668806133c782b4c";
+    String api_key = "key_api";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
