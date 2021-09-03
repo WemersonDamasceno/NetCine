@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".views.ui.HomeFragment"
+    android:background="@color/colorCinzaEscuro">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo_sem_nome" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filmes Populares"
+                android:textSize="17sp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorBranco"
+                android:textStyle="bold"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeLancamentos"
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                android:orientation="horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Series populares"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorBranco"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHomeSeriesRecentes"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="40dp"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+</LinearLayout>

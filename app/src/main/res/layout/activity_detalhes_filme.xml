@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorCinzaEscuro"
+    tools:context=".views.DetalhesFilmeActivity">
+
+
+    <ImageView
+        android:id="@+id/imgFilmeDescricao"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/teste_filme_rambo"/>
+
+    <TextView
+        android:id="@+id/tvTituloDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/imgFilmeDescricao"
+        android:text="Rambo até o fim"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/colorBranco"/>
+
+    <TextView
+        android:id="@+id/txtLinguagem"
+        android:layout_width="wrap_content"
+        android:textColor="@color/colorCinza"
+        android:layout_below="@+id/tvTituloDescricao"
+        android:layout_toEndOf="@+id/imgFilmeDescricao"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Linguagem: "/>
+
+    <TextView
+        android:id="@+id/tvLinguagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtLinguagem"
+        android:text="en"
+        android:textColor="@color/colorBranco"
+        android:textStyle="bold"
+        android:layout_below="@+id/tvTituloDescricao"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/txtLancamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorCinza"
+        android:layout_toEndOf="@+id/imgFilmeDescricao"
+        android:layout_below="@+id/txtLinguagem"
+        android:text="Lançamento:"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp" />
+
+
+    <TextView
+        android:id="@+id/tvLancamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2020-11-25"
+        android:layout_toEndOf="@+id/txtLancamento"
+        android:layout_below="@+id/tvLinguagem"
+        android:textColor="@color/colorBranco"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/txtPopularidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/imgFilmeDescricao"
+        android:textColor="@color/colorCinza"
+        android:text="Popularidade: "
+        android:layout_below="@+id/tvLancamento"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/tvPopularidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/txtPopularidade"
+        android:textColor="@color/colorBranco"
+        android:text="7.8"
+        android:textStyle="bold"
+        android:layout_below="@+id/tvLancamento"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/txtFavoritar"
+        android:text="Favoritar "
+        android:layout_below="@+id/tvPopularidade"
+        android:layout_toEndOf="@+id/imgFilmeDescricao"
+        android:textSize="17sp"
+        android:textColor="@color/colorBranco"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/ic_favoritarFilme"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tvPopularidade"
+        android:src="@drawable/ic_baseline_star_border_24"
+        android:layout_toEndOf="@+id/txtFavoritar"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:id="@+id/ic_estrelaMarcada"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_below="@+id/tvPopularidade"
+        android:src="@drawable/ic_estrela_marcada"
+        android:layout_toEndOf="@+id/txtFavoritar"
+        android:layout_marginTop="20dp"/>
+
+
+    <TextView
+        android:id="@+id/tvResumoDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="      After leaving their cave, the Croods encounter their biggest threat since leaving: another family called the Bettermans, who claim and show to be better and evolved. Grug grows suspicious of the Betterman parents, Phil and Hope,  as they secretly plan to break up his daughter Eep with her loving boyfriend Guy to ensure that their daughter Dawn has a loving and smart partner to protect her."
+        android:layout_marginStart="20dp"
+        android:layout_below="@+id/txtFavoritar"
+        android:textColor="@color/colorBranco"
+        android:textSize="17sp"/>
+
+
+
+</RelativeLayout>

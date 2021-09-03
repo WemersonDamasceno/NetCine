@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCinzaEscuro"
+    tools:context=".views.ui.PerfilFragment">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/imgPerfilUser"
+           android:layout_width="120dp"
+           android:layout_height="120dp"
+           android:layout_centerHorizontal="true"
+           android:src="@drawable/ic_perfil"/>
+
+       <ImageView
+           android:id="@+id/imgTrocarFotoPerfil"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:src="@drawable/ic_camera"
+           android:layout_marginStart="-20dp"
+           android:layout_toEndOf="@+id/imgPerfilUser"
+           android:layout_marginTop="110dp"/>
+
+
+       <ImageView
+           android:id="@+id/imgSair"
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:layout_alignParentEnd="true"
+           android:layout_marginTop="10dp"
+           android:layout_marginEnd="5dp"
+           android:src="@drawable/ic_baseline_exit_to_app_24"/>
+
+
+       <TextView
+           android:id="@+id/txtFavoritos"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/imgPerfilUser"
+           android:text="Favoritos: "
+           android:textSize="21sp"
+           android:layout_marginTop="5dp"
+           android:textStyle="bold"
+           android:textColor="@color/colorBranco"/>
+
+
+       <ImageView
+           android:id="@+id/imgSincronizar"
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_alignParentEnd="true"
+           android:layout_marginEnd="10dp"
+           android:layout_below="@+id/imgPerfilUser"
+           android:layout_marginStart="20dp"
+           android:src="@drawable/ic_sincronizar"/>
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rvFilmesFavoritos"
+           android:layout_width="match_parent"
+           android:layout_below="@+id/txtFavoritos"
+           android:layout_marginTop="20dp"
+           android:layout_height="wrap_content"/>
+
+
+       <ImageView
+           android:id="@+id/imgLost"
+           android:layout_width="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:src="@drawable/nada_encontrado"
+           android:visibility="gone"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/imgPerfilUser"/>
+
+
+
+
+   </RelativeLayout>
+
+
+
+</FrameLayout>

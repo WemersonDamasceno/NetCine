@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1086292032601",
+    "project_id": "netcine-b7c53",
+    "storage_bucket": "netcine-b7c53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086292032601:android:b5c6d16072e1d66d9c0548",
+        "android_client_info": {
+          "package_name": "com.example.netcine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086292032601-bj4fq9bt0nn3hprk8bu1e41tjetnlbfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJIy6P7eWAxFZz0XW8HeZJfwcqUWjwU7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086292032601-bj4fq9bt0nn3hprk8bu1e41tjetnlbfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

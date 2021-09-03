@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.netcine">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_netcine"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_netcine"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".views.DetalhesFilmeActivity"
+            android:label="Detalhes"
+            android:parentActivityName=".views.PaginaInicialActivity">
+        </activity>
+        <activity
+            android:name=".views.PaginaInicialActivity"
+            android:label="@string/title_activity_pg_inicial" />
+        <activity android:name=".views.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.CriarContaActivity"
+            android:label="Criar Conta"
+            android:parentActivityName=".views.LoginActivity" />
+        <activity
+            android:name=".views.LoginActivity" />
+    </application>
+
+</manifest>

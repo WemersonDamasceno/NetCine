@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorCinzaEscuro"
+    tools:context=".views.ui.FilmesFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ordenar :"
+        android:layout_marginEnd="5dp"
+        android:textColor="@color/colorBranco"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@+id/btnOrdenar"/>
+
+    <Button
+        android:id="@+id/btnOrdenar"
+        android:layout_width="50dp"
+        android:textSize="10sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorBranco"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/borda_arrendondados"
+        android:text="sort"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFilmes"
+        android:layout_below="@+id/btnOrdenar"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="match_parent" />
+
+
+</RelativeLayout>

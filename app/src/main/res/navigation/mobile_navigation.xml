@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.netcine.views.ui.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_filmes"
+        android:name="com.example.netcine.views.ui.FilmesFragment"
+        android:label="@string/filmes"
+        tools:layout="@layout/fragment_filmes" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_series"
+        android:name="com.example.netcine.views.ui.SeriesFragment"
+        android:label="Series"
+        tools:layout="@layout/fragment_series" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_perfil"
+        android:name="com.example.netcine.views.ui.PerfilFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_perfil" />
+
+    <activity
+        android:id="@+id/detalhesFilmeActivity"
+        android:name="com.example.netcine.views.DetalhesFilmeActivity"
+        android:label="activity_detalhes_filme"
+        tools:layout="@layout/activity_detalhes_filme" />
+
+
+</navigation>
